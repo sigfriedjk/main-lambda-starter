@@ -1,10 +1,8 @@
 # main-lambda-starter
 
-1. `docker build -t aws-lambda-runner .`
+1. `docker build -t aws-runner .`
 2. 
 ```
-docker run --rm \
-  -e AWS_ACCESS_KEY_ID=your_access_key_id \
-  -e AWS_SECRET_ACCESS_KEY=your_secret_access_key \
-  aws-lambda-runner
+docker run -e AWS_ACCESS_KEY_ID=$1 -e AWS_SECRET_ACCESS_KEY=$2 \
+  aws-runner "aws lambda invoke --function-name InstanceStarter --payload '{}' /dev/stdout"
 ```
